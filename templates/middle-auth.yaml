@@ -1,0 +1,19 @@
+# Declaring the user list
+apiVersion: traefik.containo.us/v1alpha1
+kind: Middleware
+metadata:
+  name: test-auth
+  namespace: traefik
+spec:
+  basicAuth:
+    secret: passwd
+---
+#Admin password created with htpasswd
+apiVersion: v1
+data:
+  users: {{ TRAEFIK_ADMIN_PASSWD | b64encode }}
+kind: Secret
+metadata:
+  creationTimestamp: null
+  name: passwd
+  namespace: traefik

@@ -1,0 +1,39 @@
+- name: "Verify that required string variables are defined"
+  assert:
+    that: 
+      - required_variable is defined
+      - required_variable | length > 0
+      - required_variable != None
+    fail_msg: "{{ required_variable }} needs to be set for the role to work"
+    success_msg: "Required variable {{ required_variable}} is defined"
+  loop_control:
+    loop_var: required_variable
+  with_items:
+    - "{{ LB_ID }}"
+    - "{{ LB_VIP_SUBNET_ID }}"
+    - "{{ LB_PUBLIC_IP }}"
+    - "{{ TRAEFIK_HOSTNAME }}"
+    - "{{ TRAEFIK_ADMIN_HOSTNAME }}"
+    - "{{ TRAEFIK_ADMIN_PASSWD }}"
+  no_log: True
+  
+
+## Traefik
+
+- name: Setup Traefik namespace
+  shell: echo "{{ lookup('template', 'namespace.yaml') }}" | kubectl apply -f -
+
+- name: Setup Traefik CRD
+  shell: echo "{{ lookup('template', 'crd.yaml') }}" | kubectl apply -f -
+
+- name: Setup Traefik RBAC
+  shell: echo "{{ lookup('template', 'rbac.yaml') }}" | kubectl apply -f -
+
+- name: Setup Traefik Admin Authentication
+  shell: echo "{{ lookup('template', 'middle-auth.yaml') }}" | kubectl apply -f -
+
+- name: Setup TLS 
+  shell: echo "{{ lookup('template', 'tlsOption.yaml') }}" | kubectl apply -f -
+
+- name: Setup traefik deployment, services and ingresses
+  shell: echo "{{ lookup('template', 'traefik.yaml') }}" | kubectl apply -f -
