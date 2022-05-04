@@ -12,6 +12,7 @@
     - "{{ LB_ID }}"
     - "{{ LB_PUBLIC_IP }}"
     - "{{ TRAEFIK_HOSTNAME }}"
+    - "{{ TRAEFIK_DOMAIN }}"
     - "{{ TRAEFIK_ADMIN_HOSTNAME }}"
     - "{{ TRAEFIK_ADMIN_PASSWD }}"
   no_log: True
