@@ -10,7 +10,6 @@
     loop_var: required_variable
   with_items:
     - "{{ LB_ID }}"
-    - "{{ LB_VIP_SUBNET_ID }}"
     - "{{ LB_PUBLIC_IP }}"
     - "{{ TRAEFIK_HOSTNAME }}"
     - "{{ TRAEFIK_ADMIN_HOSTNAME }}"

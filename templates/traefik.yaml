@@ -46,7 +46,6 @@ metadata:
     kubernetes.io/elb.class: union
     kubernetes.io/session-affinity-mode: SOURCE_IP
     kubernetes.io/elb.id: {{ LB_ID }}
-    kubernetes.io/elb.subnet-id: {{ LB_VIP_SUBNET_ID }}
     external-dns.alpha.kubernetes.io/hostname: {{ TRAEFIK_HOSTNAME }}
 spec:
   loadBalancerIP: {{ LB_PUBLIC_IP }}
