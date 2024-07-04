@@ -15,7 +15,7 @@
     - "{{ TRAEFIK_DOMAIN }}"
     - "{{ TRAEFIK_ADMIN_HOSTNAME }}"
     - "{{ TRAEFIK_ADMIN_PASSWD }}"
-  no_log: True
+  no_log: False
   
 
 ## Traefik
