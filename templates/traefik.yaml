@@ -5,7 +5,6 @@ metadata:
   namespace: traefik
   labels:
     app: traefik
-
 spec:
   replicas: 3
   selector:
@@ -19,7 +18,7 @@ spec:
       serviceAccountName: traefik-ingress-controller
       containers:
         - name: traefik
-          image: traefik:v2.4
+          image: traefik:v2.9
           args:
             - --api.insecure
             - --accesslog
@@ -43,12 +42,8 @@ metadata:
   name: traefik
   namespace: traefik
   annotations:
-    kubernetes.io/elb.class: union
-    kubernetes.io/session-affinity-mode: SOURCE_IP
-    kubernetes.io/elb.id: {{ LB_ID }}
-    external-dns.alpha.kubernetes.io/hostname: {{ TRAEFIK_HOSTNAME }}"."{{ TRAEFIK_DOMAIN }}
+    external-dns.alpha.kubernetes.io/hostname: {{ TRAEFIK_HOSTNAME }}
 spec:
-  loadBalancerIP: {{ LB_PUBLIC_IP }}
   externalTrafficPolicy: Local
   type: LoadBalancer
   selector:
