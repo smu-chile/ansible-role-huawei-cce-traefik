@@ -20,19 +20,8 @@ spec:
         description: IngressRoute is the CRD implementation of a Traefik HTTP Router.
         properties:
           apiVersion:
-            description: |-
-              APIVersion defines the versioned schema of this representation of an object.
-              Servers should convert recognized schemas to the latest internal value, and
-              may reject unrecognized values.
-              More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
             type: string
           kind:
-            description: |-
-              Kind is a string value representing the REST resource this object represents.
-              Servers may infer this from the endpoint the client submits requests to.
-              Cannot be updated.
-              In CamelCase.
-              More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
             type: string
           metadata:
             type: object
@@ -40,11 +29,6 @@ spec:
             description: IngressRouteSpec defines the desired state of IngressRoute.
             properties:
               entryPoints:
-                description: |-
-                  EntryPoints defines the list of entry point names to bind to.
-                  Entry points have to be configured in the static configuration.
-                  More info: https://doc.traefik.io/traefik/v3.0/routing/entrypoints/
-                  Default: all.
                 items:
                   type: string
                 type: array
@@ -61,9 +45,6 @@ spec:
                       - Rule
                       type: string
                     match:
-                      description: |-
-                        Match defines the router's rule.
-                        More info: https://doc.traefik.io/traefik/v3.0/routing/routers/#rule
                       type: string
                     middlewares:
                       description: |-
