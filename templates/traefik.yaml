@@ -44,11 +44,11 @@ metadata:
   annotations:
     kubernetes.io/elb.class: union
     kubernetes.io/session-affinity-mode: SOURCE_IP
-    kubernetes.io/elb.id: {{ LB_ID_TRAEFIK }}
+    kubernetes.io/elb.id: {{ LB_ID }}
     external-dns.alpha.kubernetes.io/hostname: {{ TRAEFIK_HOSTNAME }}
 spec:
   externalTrafficPolicy: Local
-  loadBalancerIP: {{ LB_PUBLIC_IP_TRAEFIK }}
+  loadBalancerIP: {{ LB_PUBLIC_IP }}
   type: LoadBalancer
   selector:
     app: traefik
