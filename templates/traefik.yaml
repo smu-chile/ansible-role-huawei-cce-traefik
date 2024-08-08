@@ -42,9 +42,13 @@ metadata:
   name: traefik
   namespace: traefik
   annotations:
+    kubernetes.io/elb.class: union
+    kubernetes.io/session-affinity-mode: SOURCE_IP
+    kubernetes.io/elb.id: {{ LB_ID_TRAEFIK }}
     external-dns.alpha.kubernetes.io/hostname: {{ TRAEFIK_HOSTNAME }}
 spec:
   externalTrafficPolicy: Local
+  loadBalancerIP: {{ LB_PUBLIC_IP_TRAEFIK }}
   type: LoadBalancer
   selector:
     app: traefik
