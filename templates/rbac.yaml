@@ -48,9 +48,9 @@ rules:
       - list
       - watch
   - apiGroups:
-      - "*"
+      - ''
     resources:
-      - "*"
+      - ''
     verbs:
       - get
       - list
